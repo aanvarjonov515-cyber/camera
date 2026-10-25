@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Interactive camera experience"
+    >
+
+    <title> </title>
+
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+    <!-- ============================= -->
+    <!-- ANIMATED BACKGROUND -->
+    <!-- ============================= -->
+
+    <div class="background-effects">
+
+        <div class="gradient-orb orb-one"></div>
+
+        <div class="gradient-orb orb-two"></div>
+
+        <div class="gradient-orb orb-three"></div>
+
+        <div class="grid-background"></div>
+
+        <div
+            class="particles"
+            id="particles"
+        ></div>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- MAIN APP -->
+    <!-- ============================= -->
+
+    <main class="app">
+
+        <!-- ========================= -->
+        <!-- INTRO SCREEN -->
+        <!-- ========================= -->
+
+        <section
+            class="screen active"
+            id="introScreen"
+        >
+
+            <div class="intro-card">
+
+                <div class="logo-area">
+
+                    <div class="camera-logo">
+
+                        <div class="camera-lens">
+
+                            <div class="camera-lens-inner"></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <p class="mini-title">
+                saytimizda kamchilik yoki nosozlik bolsa uzur soraymiz
+                </p>
+
+
+                <h2 class="main-title">
+
+                    Assalomu alaykum
+
+                    <span>
+                       websayttimizga xush kelibsiz
+                    </span>
+
+                </h2>
+
+
+                <p class="description">
+                     web satda full animatsiyadan iborat asosan index.html, script.js,
+                     style.css ya'ni web saytimiz jonlantrilgan kirng va o'zingiz koring
+                </p>
+
+
+                <!-- PRIVACY / CONSENT -->
+
+                <div class="privacy-box">
+
+                    <div class="privacy-icon">
+                        😊
+                    </div>
+
+                    <div>
+
+                        <h3>
+
+                        </h3>
+
+                        <p>
+                            bu web saytni backendti yaratilmagan shu sababdan bu web saytimizni sinov maqsadida buzishingiz mumkin
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- START BUTTON -->
+
+                <button
+                    class="primary-button"
+                    id="startCameraButton"
+                    type="button"
+                >
+
+                    <span class="button-glow"></span>
+
+                    <span class="button-content">
+
+                        <span class="button-icon">
+
+                        </span>
+
+                        web saytimizga kirqasizmi?
+
+                    </span>
+
+                </button>
+
+
+                <p class="permission-note">
+
+                    Tugmani bosganingizda brauzer web saytimizga olib otadi
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================= -->
+        <!-- CAMERA SCREEN -->
+        <!-- ========================= -->
+
+        <section
+            class="screen"
+            id="cameraScreen"
+        >
+
+            <div class="camera-page">
+
+                <!-- HEADER -->
+
+                <header class="camera-header">
+
+                    <div class="brand">
+
+                        <div class="brand-dot"></div>
+
+                        <span>
+                            CAMERA LIVE
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="camera-status"
+                        id="cameraStatus"
+                    >
+
+                        <span class="status-dot"></span>
+
+                        web saytga kirilmoqda...
+
+                    </div>
+
+                </header>
+
+
+                <!-- CAMERA WRAPPER -->
+
+                <div class="camera-wrapper">
+
+
+                    <!-- DECORATIVE CORNERS -->
+
+                    <span class="corner corner-top-left"></span>
+
+                    <span class="corner corner-top-right"></span>
+
+                    <span class="corner corner-bottom-left"></span>
+
+                    <span class="corner corner-bottom-right"></span>
+
+
+                    <!-- VIDEO -->
+
+                    <video
+                        id="cameraVideo"
+                        autoplay
+                        playsinline
+                        muted
+                    ></video>
+
+
+                    <!-- SCAN LINE -->
+
+                    <div class="scan-line"></div>
+
+
+                    <!-- CAMERA OVERLAY -->
+
+                    <div class="camera-overlay">
+
+                        <div class="focus-frame">
+
+                            <span class="focus-corner focus-1"></span>
+
+                            <span class="focus-corner focus-2"></span>
+
+                            <span class="focus-corner focus-3"></span>
+
+                            <span class="focus-corner focus-4"></span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FLASH -->
+
+                    <div
+                        class="camera-flash"
+                        id="cameraFlash"
+                    ></div>
+
+
+                </div>
+
+
+                <!-- CAMERA INFORMATION -->
+
+                <div class="camera-info">
+
+                    <div>
+
+                        <span class="info-label">
+                            STATUS
+                        </span>
+
+                        <strong id="liveStatus">
+                            LIVE
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span class="info-label">
+                            web
+                        </span>
+
+                        <strong>
+                            READY
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span class="info-label">
+                            PRIVACY
+                        </span>
+
+                        <strong>
+                            CONSENT
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACTIONS -->
+
+                <div class="camera-actions">
+
+
+                    <button
+                        class="secondary-button"
+                        id="cancelCameraButton"
+                        type="button"
+                    >
+
+                        Bekor qilish
+
+                    </button>
+
+
+                    <button
+                        class="capture-button"
+                        id="captureButton"
+                        type="button"
+                    >
+
+                        <span class="capture-ring">
+
+                            <span class="capture-center"></span>
+
+                        </span>
+
+                    </button>
+
+
+                    <div class="capture-label">
+
+                        saytni korib chiqish
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================= -->
+        <!-- PHOTO PREVIEW SCREEN -->
+        <!-- ========================= -->
+
+        <section
+            class="screen"
+            id="previewScreen"
+        >
+
+            <div class="preview-card">
+
+                <div class="success-animation">
+
+                    <div class="success-ring">
+
+                        ✓
+
+                    </div>
+
+                </div>
+
+
+                <p class="mini-title">
+
+                </p>
+
+
+                <h2 class="preview-title">
+
+                    Ajoyib!
+
+                </h2>
+
+
+                <p class="preview-description">
+
+                    ...
+
+                </p>
+
+
+                <!-- CAPTURED PHOTO -->
+
+                <div class="photo-preview-wrapper">
+
+                    <img
+                        id="capturedPhoto"
+                        alt="Olingan surat"
+                    >
+
+                    <div class="photo-overlay"></div>
+
+                </div>
+
+
+                <!-- PREVIEW BUTTONS -->
+
+                <div class="preview-actions">
+
+
+                    <button
+                        class="secondary-button"
+                        id="retakeButton"
+                        type="button"
+                    >
+
+                        🔄 Qayta ishlash
+
+                    </button>
+
+
+                    <button
+                        class="primary-button"
+                        id="savePhotoButton"
+                        type="button"
+                    >
+
+                        <span class="button-content">
+
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================= -->
+        <!-- UPLOAD / LOADING SCREEN -->
+        <!-- ========================= -->
+
+        <section
+            class="screen"
+            id="loadingScreen"
+        >
+
+            <div class="loading-card">
+
+
+                <div class="loader">
+
+                    <div class="loader-ring loader-ring-one"></div>
+
+                    <div class="loader-ring loader-ring-two"></div>
+
+                    <div class="loader-center">
+
+
+
+                    </div>
+
+                </div>
+
+
+                <h2>
+
+                    jarayonda...
+
+                </h2>
+
+
+                <p>
+
+                    Bir necha soniya...
+
+                </p>
+
+
+                <div class="progress-container">
+
+                    <div
+                        class="progress-bar"
+                        id="progressBar"
+                    ></div>
+
+                </div>
+
+
+                <span
+                    class="progress-text"
+                    id="progressText"
+                >
+                    0%
+                </span>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================= -->
+        <!-- ERROR SCREEN -->
+        <!-- ========================= -->
+
+        <section
+            class="screen"
+            id="errorScreen"
+        >
+
+            <div class="error-card">
+
+
+                <div class="error-icon">
+
+                    !
+
+                </div>
+
+
+                <h2>
+
+                    web saytda xatolik
+
+                </h2>
+
+
+                <p id="errorMessage">
+
+                    ruhsatsiz saytga kirish va bu saytni ruhsatsiz sinov uchun buzish taqiqlanadi
+
+                </p>
+
+
+                <button
+                    class="primary-button"
+                    id="tryAgainButton"
+                    type="button"
+                >
+
+                    Qayta urinish
+
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ============================= -->
+    <!-- HIDDEN CANVAS -->
+    <!-- ============================= -->
+
+    <canvas
+        id="photoCanvas"
+        hidden
+    ></canvas>
+
+
+
+    <!-- ============================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ============================= -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>
